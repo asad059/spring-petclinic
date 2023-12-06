@@ -178,6 +178,35 @@
           </execution>
         </executions>
       </plugin>
+      <!--start-->
+              <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.3.1</version>
+            <configuration>
+                <!-- Other configurations -->
+                <configLocation>checkstyle.xml</configLocation>
+                <properties>
+        <property>
+            <name>checkstyle.suppressions.file</name>
+            <value>${project.basedir}/checkstyle-suppressions.xml</value>
+        </property>
+        <property>
+            <name>checkstyle.cache.file</name>
+            <value>${project.build.directory}/checkstyle-cachefile</value>
+        </property>
+        <property>
+            <name>checkstyle.header.file</name>
+            <value>${project.basedir}/checkstyle-header.txt</value>
+        </property>
+        <!-- Allow HTTP URLs -->
+        <property>
+            <name>checkstyle.allow.http</name>
+            <value>true</value>
+        </property>
+            </configuration>
+        </plugin>
+      <!--end--->
       <plugin>
         <groupId>io.spring.javaformat</groupId>
         <artifactId>spring-javaformat-maven-plugin</artifactId>
