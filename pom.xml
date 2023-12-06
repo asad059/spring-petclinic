@@ -178,9 +178,7 @@
           </execution>
         </executions>
       </plugin>
-      <!--start-->
-            
-      <!--end--->
+
       <plugin>
         <groupId>io.spring.javaformat</groupId>
         <artifactId>spring-javaformat-maven-plugin</artifactId>
