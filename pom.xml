@@ -438,14 +438,5 @@
       </build>
     </profile>
   </profiles>
-<!---<distributionManagement>
-    <repository>
-        <id>nexus</id>
-        <url>http://172.31.4.21:8081/repository/petapp-releases/</url>
-    </repository>
-    <snapshotRepository>
-        <id>nexus</id>
-        <url>https://172.31.4.21:8081/repository/petapp-snapshot/</url>
-    </snapshotRepository>
-</distributionManagement>--->
+
 </project>
