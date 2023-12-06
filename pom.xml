@@ -195,7 +195,7 @@
             <version>${nohttp-checkstyle.version}</version>
           </dependency>
         </dependencies>
-        <distributionManagement>
+       <distributionManagement>
     <repository>
         <id>nexus</id>
         <url>http://172.31.4.21:8081/repository/petapp-releases/</url>
@@ -203,8 +203,9 @@
     <snapshotRepository>
         <id>nexus</id>
         <url>http://172.31.4.21:8081/repository/petapp-snapshot/</url>
-      </snapshotRepository>
-    </distributionManagement>
+    </snapshotRepository>
+</distributionManagement>
+
         <executions>
           <execution>
             <id>nohttp-checkstyle-validation</id>
