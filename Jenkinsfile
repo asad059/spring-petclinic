@@ -46,17 +46,7 @@ pipeline{
 //     }
 // }
 
-        stage('Run Snyk container Scan') {
-            steps {
-                snykSecurity(
-                snykInstallation: 'snyk@latest',
-                snykTokenId: 'organization-snyk-api-token',
-                failOnIssues: false,
-                monitorProjectOnBuild: true,
-                additionalArguments: '--container asad059/petapp:${BUILD_NUMBER} -d'
-        )
-    }
-}
+       
         stage('Build'){
             steps{
                 sh 'mvn clean package -DskipTests'
@@ -101,6 +91,17 @@ pipeline{
                 }
             }
         }
+         stage('Run Snyk container Scan') {
+            steps {
+                snykSecurity(
+                snykInstallation: 'snyk@latest',
+                snykTokenId: 'organization-snyk-api-token',
+                failOnIssues: false,
+                monitorProjectOnBuild: true,
+                additionalArguments: '--container asad059/petapp:${BUILD_NUMBER} -d'
+        )
+    }
+}
 
         stage('Scan and push image') {
 			steps {
