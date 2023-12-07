@@ -1,13 +1,13 @@
-FROM openjdk:8-alpine
- 
-# Required for starting application up.
-RUN apk update && apk add /bin/sh
+FROM openjdk:22-jdk-bullseye
 
-RUN mkdir -p /opt/app
-ENV PROJECT_HOME /opt/app
+RUN mkdir -p /home/petclinic
 
-COPY target/spring-petclinic-3.2.0-SNAPSHOT.jar $PROJECT_HOME/spring-boot-mongo.jar
+COPY target/spring-petclinic-3.2.0-SNAPSHOT.jar /home/petclinic/
 
-WORKDIR $PROJECT_HOME
+WORKDIR /home/petclinic/
+
 EXPOSE 8080
-CMD ["java" ,"-jar","./spring-boot-mongo.jar"]
+
+ENV MYSQL_URL jdbc:mysql://mysql:3306/petclinic
+
+CMD ["java", "-jar", "spring-petclinic-3.2.0-SNAPSHOT.jar", "--spring.profiles.active=mysql"]
