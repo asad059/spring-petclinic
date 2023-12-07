@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Display') {
             steps {
-                sh "echo ${BRANCH_NAME}"
+                sh "echo hello ${BRANCH_NAME}"
             }
         }
     }
