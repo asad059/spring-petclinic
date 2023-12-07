@@ -18,5 +18,10 @@ pipeline {
                 sh "mvn clean package -DskipTests"
             }
         }
+        stage('Display') {
+            steps {
+                sh "echo ${BRANCH_NAME}"
+            }
+        }
     }
 }
