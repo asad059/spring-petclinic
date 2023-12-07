@@ -53,7 +53,7 @@ pipeline{
                 snykTokenId: 'organization-snyk-api-token',
                 failOnIssues: false,
                 monitorProjectOnBuild: true,
-                additionalArguments: '--container asad059/maven-app:1 -d'
+                additionalArguments: '--container asad059/petapp:${BUILD_NUMBER} -d'
         )
     }
 }
