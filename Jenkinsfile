@@ -60,6 +60,11 @@ pipeline{
 
             }
         }
+        // stage('image prune'){
+        //  steps{
+        //          sh "docker image prune -af"
+        //  }
+        // }
 
         stage('Docker Image Build') {
             steps {
@@ -72,6 +77,7 @@ pipeline{
 
                     // Check if Docker daemon is running
                     sh 'docker info'
+                    sh "docker image prune -af"
 
                     // Build Docker image
                     sh 'docker build -t asad059/petapp:${BUILD_NUMBER} .'
