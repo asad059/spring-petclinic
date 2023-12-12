@@ -1,8 +1,17 @@
 version: "2.2"
 
 services:
+  petclinic:
+    image: asad059/petapp:11
+    container_name: petclinic
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+    restart: always
   mysql:
-    image: mysql:8.2
+    image: mysql:8.0
+    container_name: mysql
     ports:
       - "3306:3306"
     environment:
@@ -12,16 +21,7 @@ services:
       - MYSQL_PASSWORD=petclinic
       - MYSQL_DATABASE=petclinic
     volumes:
-      - "./conf.d:/etc/mysql/conf.d:ro"
-    profiles:
-      - mysql
-  postgres:
-    image: postgres:16.1
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=petclinic
-      - POSTGRES_USER=petclinic
-      - POSTGRES_DB=petclinic
-    profiles:
-      - postgres
+      - mysql_data:/var/lib/mysql  # Mount a volume for MySQL data
+
+volumes:
+  mysql_data:  # Define the named volume for MySQL data
