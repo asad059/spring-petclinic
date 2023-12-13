@@ -2,7 +2,7 @@ version: "2.2"
 
 services:
   petclinic:
-    image: asad059/petapp:18
+    image: asad059/petapp:19
     container_name: petclinic
     ports:
       - 80:8080
