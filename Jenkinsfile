@@ -80,7 +80,8 @@ pipeline{
                     sh "docker image prune -af"
 
                     // Build Docker image
-                    sh 'docker build -t asad059/petapp:${BUILD_NUMBER} .'
+                    //sh 'docker build -t asad059/petapp:${BUILD_NUMBER} .'
+                    sh 'docker build -t asad059/petapp:latest .'
                     sh 'docker build -t teclops.jfrog.io/docker-local/petapp:${BUILD_NUMBER} .'
                     
                     // Check the created Docker image
@@ -92,7 +93,8 @@ pipeline{
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'docker-cred') {
-                        sh 'docker push asad059/petapp:${BUILD_NUMBER}'
+                        sh 'docker push asad059/petapp:latest'
+                        //sh 'docker push asad059/petapp:${BUILD_NUMBER}'    
                     }
                 }
             }
@@ -104,7 +106,7 @@ pipeline{
                 snykTokenId: 'organization-snyk-api-token',
                 failOnIssues: false,
                 monitorProjectOnBuild: true,
-                additionalArguments: '--container asad059/petapp:${BUILD_NUMBER} -d'
+                additionalArguments: '--container asad059/petapp:latest -d'
         )
     }
 }
